@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "141210257258",
+    "firebase_url": "https://csci-3130-software-engineering.firebaseio.com",
+    "project_id": "csci-3130-software-engineering",
+    "storage_bucket": "csci-3130-software-engineering.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141210257258:android:3a39fc5a1f8a5ad2d2c713",
+        "android_client_info": {
+          "package_name": "com.example.softwareen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141210257258-599iiuu04fbnvp4ia5g3o78gdgtimu0o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.softwareen",
+            "certificate_hash": "7ebffd1a7d7c17635b3de56545b7b05e4eed5724"
+          }
+        },
+        {
+          "client_id": "141210257258-6eufb3rrvp1p3jmudp8kujpd2cochdo9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuutfVs2J2KW5bYgdwoXTAwXWIe_Bz7mA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141210257258-6eufb3rrvp1p3jmudp8kujpd2cochdo9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
