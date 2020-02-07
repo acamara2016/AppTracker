@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         password_feedback=findViewById(R.id.feedback);
         password_feedback.setVisibility(View.GONE);
 
+
     }
     public void login(View view){
         inputEmail= findViewById(R.id.email);
@@ -149,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             setContentView(R.layout.activity_main2);
+                            startActivity(new Intent(MainActivity.this, Main2Activity.class));
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
