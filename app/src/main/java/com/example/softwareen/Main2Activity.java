@@ -68,10 +68,10 @@ public class Main2Activity extends AppCompatActivity {
     }
     //change UI when user choose to add new substance
     public void add_newSubstance(View view){
-        //setContentView();
+        setContentView(R.layout.fragment_customsubstance);
     }
     public void backToMainUI(View view){
-        setContentView(R.layout.fragment_home);
+     //   setContentView(R.layout.activity_main2);
     }
 
     @Override

@@ -42,7 +42,7 @@
         android:text="Enter date of birth" />
 
     <EditText
-        android:id="@+id/date"
+        android:id="@+id/current_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"

@@ -35,6 +35,7 @@
         android:layout_marginTop="100dp"
         android:layout_marginRight="60dp"
         android:minWidth="88dip"
+        android:onClick="storeNewSubstance"
         android:text="Add a new substance"
         android:textAllCaps="true"
         android:textSize="14sp"
