@@ -20,4 +20,10 @@ public class welcome_screen_login extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //called when user click login
+    public void login(View view){
+        Intent intent = new Intent();
+        startActivity(intent);
+    }
+
 }
