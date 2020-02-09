@@ -29,14 +29,16 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword, inputUsername;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private Button btnSignIn, btnSignUp, btnResetPassword, add_substance;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
     private TextView password_feedback;
     public String state;
     public FirebaseDatabase database = FirebaseDatabase.getInstance();
     public EditText username, date, phone, address;
-    DatabaseReference ref = database.getReference("t1");
+    private EditText substance_name;
+    private EditText substance_unit;
+    DatabaseHandler db = new DatabaseHandler("t1");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         state = "Register";
@@ -49,7 +51,18 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         password_feedback=findViewById(R.id.feedback);
         password_feedback.setVisibility(View.GONE);
+        add_substance = findViewById(R.id.add_substance_button);
+        substance_name = findViewById(R.id.substance_name);
+        substance_unit = findViewById(R.id.substance_unit);
 
+    }
+    public void storeNewSubstance(View view){
+        FirebaseUser user = mAuth.getCurrentUser();
+        User u = new User();
+        String name = substance_name.toString();
+        int unit = Integer.parseInt(substance_unit.toString());
+        Substance s = new Substance(1,name,unit);
+        db.AddTakenSubstance(u,user.getUid(),s);
     }
     public void login(View view){
         inputEmail= findViewById(R.id.email);
@@ -59,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         String password=inputPassword.getText().toString();
         login(email,password);
     }
-    public void information(View view){
+    /*public void information(View view){
         username=findViewById(R.id.username);
         date=findViewById(R.id.date);
         address=findViewById(R.id.address);
@@ -69,10 +82,13 @@ public class MainActivity extends AppCompatActivity {
         ad.setPostalCode(address.toString());
         String user = username.getText().toString();
         registerInformation(user,d,ad);
-    }
+    }*/
 
     public void loginUI(View view){
         setContentView(R.layout.login);
+    }
+    public void newSubstanceUI(View view){
+        setContentView(R.layout.fragment_customsubstance);
     }
     public void registerUI(View view){
         setContentView(R.layout.register);
@@ -111,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         password_feedback.setVisibility(View.VISIBLE);
         //password_feedback.setTextColor(Integer.parseInt("RED"));
     }
-    public void register(String email, final String password){
+    public void register(final String email, final String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -119,8 +135,16 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            ref = database.getReference();
-                            ref.child("user").push().setValue(password);
+                            User u = new User();
+                            u.setEmail(email);
+                            u.setUID(user.getUid());
+                            Substance s = new Substance(1,"Marijuana",23);
+                             db.AddUserInfo(u,user.getUid());
+                             db.AddTakenSubstance(u,user.getUid(),s);
+                            /*
+                            TODO (Making a database class to handle all interaction
+                            ref.child("user").push().child(userID).setValue(u);
+                            */
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -133,13 +157,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    public void registerInformation(String name, Date d, Address a){
+    /*public void registerInformation(String name, Date d, Address a){
         ref=database.getReference("user");
         String date = d.toString();
         String address = a.getAddressLine(a.getMaxAddressLineIndex());
 
         ref.setValue("Name:"+name+" Date:"+date+" Address:"+address);
-    }
+    }*/
     public void login(String email, String password){
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -149,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             setContentView(R.layout.activity_main2);
+                            startActivity(new Intent(MainActivity.this, Main2Activity.class));
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
