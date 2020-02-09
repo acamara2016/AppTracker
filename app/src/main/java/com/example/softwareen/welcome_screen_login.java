@@ -22,7 +22,7 @@ public class welcome_screen_login extends AppCompatActivity {
 
     //called when user click login
     public void login(View view){
-        Intent intent = new Intent();
+        Intent intent = new Intent(this, home_screen.class);
         startActivity(intent);
     }
 

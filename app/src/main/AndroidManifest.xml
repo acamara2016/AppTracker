@@ -11,19 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".add_create_substance"></activity>
+        <activity android:name=".add_substance_list" />
         <activity android:name=".welcome_screen_login">
-
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".welcome_screen_signup"
-                  android:parentActivityName=".welcome_screen_login">
-
-        </activity>
-
+        <activity
+            android:name=".welcome_screen_signup"
+            android:parentActivityName=".welcome_screen_login" />
+        <activity android:name=".home_screen" />
     </application>
 
 </manifest>
