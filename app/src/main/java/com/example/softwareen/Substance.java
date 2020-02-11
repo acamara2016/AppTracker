@@ -1,15 +1,15 @@
 package com.example.softwareen;
 
 public class Substance {
-    private int id;
+    private String id;
     private String name;
-    private int amount;
+    private double amount;
 
 
     public Substance(){
 
     }
-    public Substance(int id, String name, int amount){
+    public Substance(String id, String name, double amount){
         this.id=id;
         this.name=name;
         this.amount=amount;
@@ -19,6 +19,6 @@ public class Substance {
     public void setAmount(int amount){this.amount=amount;}
 
     public String getName(){return name;}
-    public int getAmount(){return amount;}
+    public double getAmount(){return amount;}
 
 }
