@@ -16,7 +16,7 @@ public class welcome_screen_signup extends AppCompatActivity {
     }
 
     //used when someone clicks the signup button
-    protected void signUp(View view){
+    public void signUp(View view){
         Intent intent = new Intent(this, home_screen.class);
         startActivity(intent);
     }
