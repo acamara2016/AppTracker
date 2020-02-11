@@ -11,17 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".welcome_screen_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".welcome_screen_signup"
+            android:parentActivityName=".welcome_screen_login" />
+        <activity android:name=".home_screen" />
+        <activity android:name=".home_profile"
+                  android:parentActivityName=".home_screen">
+        </activity>
+        <activity
+            android:name=".add_substance_list"
+            android:parentActivityName=".home_screen"></activity>
+        <activity
+            android:name=".add_create_substance"
+            android:parentActivityName=".add_substance_list"></activity>
     </application>
 
 </manifest>
