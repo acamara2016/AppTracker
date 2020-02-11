@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/cancel_category"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:background="#FA141414"
+            android:clickable="true"
+            android:onClick="backToMainUI"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleX="1"
+            android:scaleY="1">
+
+            <ImageView
+                android:id="@+id/marijuana_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="120dp"
+                android:clickable="true"
+                android:scaleX="1"
+                android:scaleY="1"
+                app:srcCompat="@mipmap/marijuana_round" />
+
+            <ImageView
+                android:id="@+id/beer_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="120dp"
+                android:clickable="true"
+                android:scaleX="1"
+                android:scaleY="1"
+                app:srcCompat="@mipmap/beer_round" />
+
+            <ImageView
+                android:id="@+id/addCategory"
+                android:layout_width="71dp"
+                android:layout_height="72dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="120dp"
+                app:srcCompat="@android:drawable/ic_input_add" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
+
+</LinearLayout>
