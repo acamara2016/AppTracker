@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class home_screen extends AppCompatActivity {
 
-    private Button butt;
+    private FloatingActionButton butt;
 
 
 
@@ -18,7 +20,7 @@ public class home_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 //Thats is the button reference ID
-        butt=(Button)findViewById(R.id.addSubstance_button);
+        butt=(FloatingActionButton)findViewById(R.id.addSubstance_button);
         /*This sets up the screen so that when the button is clicked, it automatically goes to the
        secondActivity which is the add_substance_list.class */
         butt.setOnClickListener(new View.OnClickListener()
