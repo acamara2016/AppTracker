@@ -51,7 +51,7 @@ public class welcome_screen_signup extends AppCompatActivity {
                 if (valid_username==true && valid_first_name ==true && valid_last_name == true
                 && valid_email && valid_password ==true) {
 
-                    signUp_home_screen();
+                    signUp_home_profile(user_profile);
                 }
 
                 else{
@@ -62,12 +62,13 @@ public class welcome_screen_signup extends AppCompatActivity {
         });
     }
 
-    public void signUp_home_screen() {
-        Intent intent = new Intent(this, home_screen.class);
-        startActivity(intent);
+    public void signUp_home_profile(User new_user) {
+        //Intent intent = new Intent(this, home_screen.class);
+        //startActivity(intent);
 
-        //Intent intent = new Intent(this, temperary_correct_sign_up_validation.class);
-        ///startActivity(intent);
+        Intent intent = new Intent(this, home_profile.class);
+        intent.putExtra("Profile",new_user);
+        startActivity(intent);
     }
 
     public void sign_up_error() {
