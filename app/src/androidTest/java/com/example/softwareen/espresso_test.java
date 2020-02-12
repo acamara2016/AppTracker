@@ -32,62 +32,345 @@ public class espresso_test {
     /* USER STORY 1 TESTS */
 
     @Test
-    public void sign_up_empty_email_feild() {
-
-
-    }
-
-    @Test
-    public void sign_up_empty_password_feild() {
-
-
-    }
-
-    @Test
-    public void sign_up_invalid_email() {
-
-
-    }
-
-    @Test
-    public void sign_up_invalid_password() {
-
-
-    }
-
-    @Test
-    public void correct_sign_up_input_name_and_email() {
-
-    }
-
-    /* USER STORY 2 TESTS */
-
-    @Test
-    public void sign_in_email_incorrect() {
-
-    }
-
-    @Test
-    public void sign_in_password_incorrect() {
-
-
-    }
-
-    @Test
     public void sign_in_empty_email_feild() {
 
+        onView(withId(R.id.login_username))
+                .perform(replaceText(""));
+        onView(withId(R.id.login_password))
+                .perform(replaceText("Avrq17123"));
+        onView(withId(R.id.login_login_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+               // .check(matches(withText("Wrong Name Entered")));
+
 
     }
 
     @Test
-    public void sign_in_empty_name_feild() {
+    public void sign_in_empty_password_feild() {
+
+        onView(withId(R.id.login_username))
+                .perform(replaceText("Avrq17123"));
+        onView(withId(R.id.login_password))
+                .perform(replaceText(""));
+        onView(withId(R.id.login_login_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+
 
 
     }
 
     @Test
-    public void correct_sign_in_input_name_and_email() {}
+    public void sign_in_invalid_email() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.login_username))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.login_password))
+                .perform(replaceText("SJk3249!"));
+        onView(withId(R.id.login_login_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
 
+
+
+    }
+
+    @Test
+    public void sign_uin_invalid_password() {
+
+        onView(withId(R.id.login_username))
+                .perform(replaceText("joshua@gmail.com"));
+        onView(withId(R.id.login_password))
+                .perform(replaceText("aaaaaa"));
+        onView(withId(R.id.login_login_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+
+    }
+
+    @Test
+    public void correct_sign_in_input_name_and_email() {
+
+        onView(withId(R.id.login_username))
+                .perform(replaceText("joshua@gmail.com"));
+        onView(withId(R.id.login_password))
+                .perform(replaceText("SJk3249!"));
+        onView(withId(R.id.login_login_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+    }
+
+
+
+    /* Iteration 1 USER STORY 2 TESTS */
+
+    @Test
+    public void sign_up_email_incorrect() {
+
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcaedgan"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+    }
+    @Test
+    public void sign_up_password_feild_empty() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcaedgan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17129"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+    }
+    @Test
+    public void sign_up_password_check_feild_empty() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcaedgan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17129"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+    }
+
+    @Test
+    public void sign_up_password_invalid_entry() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcaedgan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("a"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("a"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+    }
+    @Test
+    public void passwords_dont_match() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcaedgan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17129"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+    }
+
+    @Test
+    public void sign_up_empty_email_feild() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+
+    }
+    @Test
+    public void sign_up_empty_id_feild() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("Joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcadegan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+    }
+
+
+    @Test
+    public void sign_up_empty_first_name_feild() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Syms"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcadegan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+    }
+
+    @Test
+    public void sign_up_empty_last_name_feild() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("Joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText("jcadegan@gmail.com"));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+    }
+
+    @Test
+    public void sign_up_empty_email() {
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.login_signup_btn))
+                .perform(click());
+        onView(withId(R.id.signup_username))
+                .perform(replaceText("js53711"));
+        onView(withId(R.id.signup_firstname))
+                .perform(replaceText("Joshua"));
+        onView(withId(R.id.signup_lastname))
+                .perform(replaceText("Cadegan"));
+        onView(withId(R.id.signup_email))
+                .perform(replaceText(""));
+        onView(withId(R.id.signup_confirmpassword))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_password))
+                .perform(replaceText("Avrqt17123"));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        //onView(withId(R.id.wrongNameError))
+        // .check(matches(withText("Wrong Name Entered")));
+
+    }
+
+    @Test
+    public void correct_sign_up() {
+
+            onView(withId(R.id.login_signup_btn))
+                    .perform(click());
+            onView(withId(R.id.login_signup_btn))
+                    .perform(click());
+            onView(withId(R.id.signup_username))
+                    .perform(replaceText("js53711"));
+            onView(withId(R.id.signup_firstname))
+                    .perform(replaceText("Joshua"));
+            onView(withId(R.id.signup_lastname))
+                    .perform(replaceText("Syms"));
+            onView(withId(R.id.signup_email))
+                    .perform(replaceText("jcadegan@gmail.com"));
+            onView(withId(R.id.signup_confirmpassword))
+                    .perform(replaceText("Avrqt17123"));
+            onView(withId(R.id.signup_password))
+                    .perform(replaceText("Avrqt17123"));
+            onView(withId(R.id.signup_signup_btn))
+                    .perform(click());
+            //onView(withId(R.id.wrongNameError))
+            // .check(matches(withText("Wrong Name Entered")));
+
+        }
 }
 
 
