@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class welcome_screen_login extends AppCompatActivity {
 
@@ -16,6 +17,9 @@ public class welcome_screen_login extends AppCompatActivity {
 
     //Called when user clicks sign-up
     public void goToSignup(View view){
+
+        EditText name_feild = (EditText) findViewById(R.id.name);
+        EditText email_feild = (EditText) findViewById(R.id.email);
         Intent intent = new Intent(this, welcome_screen_signup.class);
         startActivity(intent);
     }

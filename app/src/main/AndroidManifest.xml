@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".temperary_correct_sign_up_validation"></activity>
+        <activity android:name=".temperaryErrorPage" />
         <activity android:name=".welcome_screen_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +24,15 @@
             android:name=".welcome_screen_signup"
             android:parentActivityName=".welcome_screen_login" />
         <activity android:name=".home_screen" />
-        <activity android:name=".home_profile"
-                  android:parentActivityName=".home_screen">
-        </activity>
+        <activity
+            android:name=".home_profile"
+            android:parentActivityName=".home_screen" />
         <activity
             android:name=".add_substance_list"
-            android:parentActivityName=".home_screen"></activity>
+            android:parentActivityName=".home_screen" />
         <activity
             android:name=".add_create_substance"
-            android:parentActivityName=".add_substance_list"></activity>
+            android:parentActivityName=".add_substance_list" />
     </application>
 
 </manifest>

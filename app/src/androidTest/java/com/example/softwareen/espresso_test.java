@@ -30,7 +30,7 @@ public class espresso_test {
             = new ActivityScenarioRule<>(welcome_screen_login.class);
 
     /* USER STORY 1 TESTS */
-
+/*
     @Test
     public void sign_in_empty_email_feild() {
 
@@ -108,7 +108,7 @@ public class espresso_test {
         // .check(matches(withText("Wrong Name Entered")));
 
     }
-
+*/
 
 
     /* Iteration 1 USER STORY 2 TESTS */
@@ -132,8 +132,8 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.error_errorPage))
+         .check(matches(withText("There was an error setting up your account, please try again")));
 
     }
     @Test
@@ -154,8 +154,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17129"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
     }
     @Test
     public void sign_up_password_check_feild_empty() {
@@ -175,8 +177,10 @@ public class espresso_test {
                 .perform(replaceText(""));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
     }
 
     @Test
@@ -197,8 +201,10 @@ public class espresso_test {
                 .perform(replaceText("a"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
     }
     @Test
     public void passwords_dont_match() {
@@ -218,8 +224,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17129"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
     }
 
     @Test
@@ -240,8 +248,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
 
 
     }
@@ -265,8 +275,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
 
     }
 
@@ -291,8 +303,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
 
     }
 
@@ -316,9 +330,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
-
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
     }
 
     @Test
@@ -341,8 +356,10 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        //onView(withId(R.id.wrongNameError))
-        // .check(matches(withText("Wrong Name Entered")));
+        onView(withId(R.id.signup_signup_btn))
+                .perform(click());
+        onView(withId(R.id.error_errorPage))
+                .check(matches(withText("There was an error setting up your account, please try again")));
 
     }
 
@@ -367,8 +384,8 @@ public class espresso_test {
                     .perform(replaceText("Avrqt17123"));
             onView(withId(R.id.signup_signup_btn))
                     .perform(click());
-            //onView(withId(R.id.wrongNameError))
-            // .check(matches(withText("Wrong Name Entered")));
+            onView(withId(R.id.home_TextView))
+             .check(matches(withText("welcome_temperary_successful_login")));
 
         }
 }
