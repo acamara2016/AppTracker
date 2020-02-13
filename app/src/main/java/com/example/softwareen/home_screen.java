@@ -23,7 +23,7 @@ public class home_screen extends AppCompatActivity {
         butt=(FloatingActionButton)findViewById(R.id.addSubstance_button);
         /*This sets up the screen so that when the button is clicked, it automatically goes to the
        secondActivity which is the add_substance_list.class */
-        butt.setOnClickListener(new View.OnClickListener()
+        button.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)

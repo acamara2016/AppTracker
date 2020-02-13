@@ -1,6 +1,8 @@
 package com.example.softwareen;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class User {
+public class User implements Parcelable {
     private String uid;
     private String username;
     private String first_name;
@@ -20,6 +22,28 @@ public class User {
         this.uid=uid;
         this.password = password;
     }
+
+    protected User(Parcel in) {
+        uid = in.readString();
+        username = in.readString();
+        first_name = in.readString();
+        last_name = in.readString();
+        email = in.readString();
+        password = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
     //setters
     public void setUID(String uid){
         this.uid=uid;
@@ -51,5 +75,20 @@ public class User {
                 "Email: " + this.email + "\n" +
                 "Username: " + this.username + "\n" +
                 "Password: " + this.password;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(username);
+        dest.writeString(first_name);
+        dest.writeString(last_name);
+        dest.writeString(email);
+        dest.writeString(password);
     }
 }
