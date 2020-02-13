@@ -8,7 +8,7 @@ public class Cannibus extends Substance{
         private double cbd_content;
         private String strain;
 
-        public Cannibus(String id, String name, double amount, String strain, double thc_content, double cbd_content) {
+        public Cannibus(String id, String name, String amount, String strain, double thc_content, double cbd_content) {
 
             super(id, name, amount);
             this.strain = strain;

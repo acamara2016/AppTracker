@@ -122,16 +122,16 @@ public class welcome_screen_signup extends AppCompatActivity {
                                 db.AddUserInfo(new User(user.getUid(),u,f,l,e,p));
                                 Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
 
-                                Intent intent = new Intent(welcome_screen_signup.this, welcome_screen_login.class);
+                                Intent intent = new Intent(welcome_screen_signup.this, home_screen.class);
                                 startActivity(intent);
-                                progressbar.setVisibility(View.GONE);
+                                progressbar.setVisibility(View.VISIBLE);
 
 
                             } else
                             {
 
                                 Toast.makeText(getApplicationContext(), "Registration failed!!" + " Please try again later", Toast.LENGTH_LONG).show();
-                                progressbar.setVisibility(View.GONE);
+                                //progressbar.setVisibility(View.GONE);
 
                             }
 

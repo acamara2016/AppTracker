@@ -40,10 +40,10 @@ public class FirebaseTest {
         double thc = 22;
 
 
-        Cannibus testCase = new Cannibus("098kdos970", "Scotia", 1,"Sativa",12,22);
+        Cannibus testCase = new Cannibus("098kdos970", "Scotia", "1","Sativa",12,22);
         User u =new User(uid,username,first_name,last_name,email,password);
         handler.AddUserInfo(u);
-        handler.addCustomSubstance(testCase);
+        handler.addCustomSubstance(testCase, u);
 
     }
 

@@ -31,7 +31,13 @@ class FirebaseHandler {
     }
 
 
-    public void addCustomSubstance(Substance s){
+    public void addCustomSubstance(Substance s, User user){
+
+        ref.child(user.getUID()).child("Substances").push().setValue(s);
+
+    }
+
+    public void addSubstance(Substance s){
 
         ref.child("Substances").push().setValue(s);
     }
