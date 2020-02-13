@@ -9,6 +9,7 @@ import org.junit.Rule;
 import org.junit.runner.RunWith;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
+
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.pressKey;
@@ -18,6 +19,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.action.ViewActions.swipeUp;
+
 
 import static org.junit.Assert.*;
 
@@ -154,8 +156,6 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17129"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.error_errorPage))
                 .check(matches(withText("There was an error setting up your account, please try again")));
     }
@@ -177,35 +177,10 @@ public class espresso_test {
                 .perform(replaceText(""));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.error_errorPage))
                 .check(matches(withText("There was an error setting up your account, please try again")));
     }
 
-    @Test
-    public void sign_up_password_invalid_entry() {
-        onView(withId(R.id.login_signup_btn))
-                .perform(click());
-        onView(withId(R.id.signup_username))
-                .perform(replaceText("js53711"));
-        onView(withId(R.id.signup_firstname))
-                .perform(replaceText("joshua"));
-        onView(withId(R.id.signup_lastname))
-                .perform(replaceText("Syms"));
-        onView(withId(R.id.signup_email))
-                .perform(replaceText("jcaedgan@gmail.com"));
-        onView(withId(R.id.signup_confirmpassword))
-                .perform(replaceText("a"));
-        onView(withId(R.id.signup_password))
-                .perform(replaceText("a"));
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
-        onView(withId(R.id.error_errorPage))
-                .check(matches(withText("There was an error setting up your account, please try again")));
-    }
     @Test
     public void passwords_dont_match() {
         onView(withId(R.id.login_signup_btn))
@@ -222,8 +197,6 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_password))
                 .perform(replaceText("Avrqt17129"));
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
         onView(withId(R.id.error_errorPage))
@@ -248,8 +221,6 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.error_errorPage))
                 .check(matches(withText("There was an error setting up your account, please try again")));
 
@@ -257,8 +228,7 @@ public class espresso_test {
     }
     @Test
     public void sign_up_empty_id_feild() {
-        onView(withId(R.id.login_signup_btn))
-                .perform(click());
+
         onView(withId(R.id.login_signup_btn))
                 .perform(click());
         onView(withId(R.id.signup_username))
@@ -273,8 +243,6 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_password))
                 .perform(replaceText("Avrqt17123"));
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
         onView(withId(R.id.error_errorPage))
@@ -285,8 +253,7 @@ public class espresso_test {
 
     @Test
     public void sign_up_empty_first_name_feild() {
-        onView(withId(R.id.login_signup_btn))
-                .perform(click());
+
         onView(withId(R.id.login_signup_btn))
                 .perform(click());
         onView(withId(R.id.signup_username))
@@ -303,8 +270,6 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.error_errorPage))
                 .check(matches(withText("There was an error setting up your account, please try again")));
 
@@ -312,8 +277,7 @@ public class espresso_test {
 
     @Test
     public void sign_up_empty_last_name_feild() {
-        onView(withId(R.id.login_signup_btn))
-                .perform(click());
+
         onView(withId(R.id.login_signup_btn))
                 .perform(click());
         onView(withId(R.id.signup_username))
@@ -330,16 +294,13 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.error_errorPage))
                 .check(matches(withText("There was an error setting up your account, please try again")));
     }
 
     @Test
     public void sign_up_empty_email() {
-        onView(withId(R.id.login_signup_btn))
-                .perform(click());
+
         onView(withId(R.id.login_signup_btn))
                 .perform(click());
         onView(withId(R.id.signup_username))
@@ -356,8 +317,6 @@ public class espresso_test {
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
                 .perform(click());
-        onView(withId(R.id.signup_signup_btn))
-                .perform(click());
         onView(withId(R.id.error_errorPage))
                 .check(matches(withText("There was an error setting up your account, please try again")));
 
@@ -366,8 +325,6 @@ public class espresso_test {
     @Test
     public void correct_sign_up() {
 
-            onView(withId(R.id.login_signup_btn))
-                    .perform(click());
             onView(withId(R.id.login_signup_btn))
                     .perform(click());
             onView(withId(R.id.signup_username))

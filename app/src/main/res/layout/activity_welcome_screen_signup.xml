@@ -85,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="154dp"
         android:layout_marginEnd="169dp"
-        android:layout_marginBottom="356dp"
+        android:layout_marginBottom="380dp"
         android:text="Sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
