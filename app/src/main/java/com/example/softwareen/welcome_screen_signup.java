@@ -18,8 +18,8 @@ public class welcome_screen_signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen_signup);
 
-        Button submit = (Button) findViewById(R.id.signup_signup_btn);
-        submit.setOnClickListener(new View.OnClickListener() {
+        Button signup_signup_btn = (Button) findViewById(R.id.signup_signup_btn);
+        signup_signup_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -109,7 +109,6 @@ public class welcome_screen_signup extends AppCompatActivity {
         }
         return passwords_match;
     }
-
 }
 
 

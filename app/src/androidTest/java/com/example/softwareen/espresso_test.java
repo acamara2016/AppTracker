@@ -17,7 +17,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
+import static androidx.test.espresso.action.ViewActions.swipeUp;
 
 import static org.junit.Assert.*;
 
@@ -131,7 +131,7 @@ public class espresso_test {
         onView(withId(R.id.signup_password))
                 .perform(replaceText("Avrqt17123"));
         onView(withId(R.id.signup_signup_btn))
-                .perform(click());
+               .perform(click());
         onView(withId(R.id.error_errorPage))
          .check(matches(withText("There was an error setting up your account, please try again")));
 
@@ -384,8 +384,8 @@ public class espresso_test {
                     .perform(replaceText("Avrqt17123"));
             onView(withId(R.id.signup_signup_btn))
                     .perform(click());
-            onView(withId(R.id.home_TextView))
-             .check(matches(withText("welcome_temperary_successful_login")));
+            onView(withId(R.id.welcome))
+             .check(matches(withText("Welcome js53711")));
 
         }
 }

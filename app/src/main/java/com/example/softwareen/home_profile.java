@@ -7,9 +7,6 @@ import android.content.Intent;
 import android.widget.*;
 import android.view.*;
 
-
-
-
 public class home_profile extends AppCompatActivity {
 
     @Override
@@ -18,12 +15,10 @@ public class home_profile extends AppCompatActivity {
         setContentView(R.layout.activity_home_profile);
 
         Intent intent = getIntent();
-       User user = intent.getParcelableExtra("Profile");
+        User user = intent.getParcelableExtra("Profile");
 
         TextView welcome = (TextView) findViewById(R.id.welcome);
         welcome.setText("Welcome " + user.getUsername());
 
-
-        //welcome_message
     }
 }
