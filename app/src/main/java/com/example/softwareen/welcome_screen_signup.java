@@ -1,121 +1,149 @@
 package com.example.softwareen;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.regex.Pattern;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import org.w3c.dom.Text;
 
 public class welcome_screen_signup extends AppCompatActivity {
+    private EditText username, first_name, last_name, email, password, confirm_passw;
+    private TextView username_feedback, first_name_feedback, last_name_feedback, email_feedback, password_feedback, confirm_passw_feedback;
+    private TextView passwd_not_match_feedback;
+    private Button sign_button;
+    private ProgressBar progressbar;
+    private FirebaseAuth mAuth;
+    FirebaseHandler db = new FirebaseHandler("t1");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen_signup);
+        mAuth = FirebaseAuth.getInstance();
 
-        Button signup_signup_btn = (Button) findViewById(R.id.signup_signup_btn);
-        signup_signup_btn.setOnClickListener(new View.OnClickListener() {
+        // getting all values
+        username = findViewById(R.id.signup_username);
+        first_name = findViewById(R.id.signup_firstname);
+        last_name = findViewById(R.id.signup_lastname);
+        email = findViewById(R.id.signup_email);
+        password = findViewById(R.id.signup_password);
+        confirm_passw = findViewById(R.id.signup_confirmpassword);
+        sign_button = findViewById(R.id.signup_signup_btn);
+        progressbar = findViewById(R.id.signup_progressbar);
 
-            @Override
-            public void onClick(View v) {
-
-                EditText signup_username = (EditText) findViewById(R.id.signup_username);
-                EditText signup_firstname = (EditText) findViewById(R.id.signup_firstname);
-                EditText signup_lastname = (EditText) findViewById(R.id.signup_lastname);
-                EditText signup_email = (EditText) findViewById(R.id.signup_email);
-                EditText signup_password = (EditText) findViewById(R.id.signup_password);
-                EditText signup_confirm_password = (EditText) findViewById(R.id.signup_confirmpassword);
-
-
-                String signup = signup_username.getText().toString();
-                String last_name = signup_lastname.getText().toString();
-                String first_name = signup_firstname.getText().toString();
-                String email = signup_email.getText().toString();
-                String password = signup_password.getText().toString();
-                String confirm_password = signup_confirm_password.getText().toString();
-
-                Boolean valid_username = name_validator(signup);
-                Boolean valid_first_name = name_validator(first_name);
-                Boolean valid_last_name = name_validator(last_name);
-                Boolean valid_email= email_validator(email);
-                Boolean valid_password= password_confirmation(password,confirm_password);
-
-                User user_profile = new User("aaaa", signup,last_name,first_name,email,password);
-
-
-                if (valid_username==true && valid_first_name ==true && valid_last_name == true
-                && valid_email && valid_password ==true) {
-
-                    signUp_home_profile(user_profile);
-                }
-
-                else{
-                    sign_up_error();
-                }
-
-            }
-        });
     }
 
-    public void signUp_home_profile(User new_user) {
-        //Intent intent = new Intent(this, home_screen.class);
-        //startActivity(intent);
 
-        Intent intent = new Intent(this, home_profile.class);
-        intent.putExtra("Profile",new_user);
-        startActivity(intent);
+    public void register(View view)
+    {
+        String username, first_name, last_name, email, password, confirm_passw;
+        username = this.username.getText().toString();
+        first_name = this.first_name.getText().toString();
+        last_name = this.last_name.getText().toString();
+        email = this.email.getText().toString();
+        password = this.password.getText().toString();
+        confirm_passw = this.confirm_passw.getText().toString();
+        registerNewUser(username, first_name, last_name, email, password,confirm_passw);
     }
 
-    public void sign_up_error() {
-        Intent intent = new Intent(this, temperaryErrorPage.class);
-        startActivity(intent);
-    }
-
-    public static boolean name_validator(String name) {
-        Boolean valid;
-
-        if (name.length() == 0 || name.equals("") || name == null) {
-            valid = false;
-
-        } else {
-            valid = true;
+    /**
+     * @author Joshua & Robert
+     * @param u
+     * @param f
+     * @param l
+     * @param e
+     * @param p
+     * @param c
+     * @return
+     */
+    private boolean validateInput(String u, String f, String l, String e, String p, String c)
+    {
+        username_feedback=findViewById(R.id.username_input_feedback);
+        first_name_feedback=findViewById(R.id.first_name_input_feedback);
+        last_name_feedback=findViewById(R.id.last_name_input_feedback);
+        email_feedback=findViewById(R.id.signup_email);
+        password_feedback=findViewById(R.id.password_input_feedback);
+        confirm_passw_feedback=findViewById(R.id.confirm_input_feedback);
+        passwd_not_match_feedback=findViewById(R.id.username_input_feedback);
+        //change the Toast to TextView that will appear when user fail dto fill fields
+        if (TextUtils.isEmpty(u)) {
+            username_feedback.setVisibility(View.VISIBLE);
+            return true;
         }
-        return valid;
-    }
-
-    public static boolean email_validator(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@" +
-                "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-
-        Pattern pat = Pattern.compile(emailRegex);
-        if (email == null)
-            return false;
-        return pat.matcher(email).matches();
-    }
-
-    public static boolean password_confirmation(String password1, String password2) {
-
-        boolean passwords_match;
-        if (password1.equals(password2)){
-            passwords_match = true;
+        if (TextUtils.isEmpty(f)) {
+            first_name_feedback.setVisibility(View.VISIBLE);
+            return true;
         }
+        if (TextUtils.isEmpty(l)) {
+            last_name_feedback.setVisibility(View.VISIBLE);
+            return true;
+        }
+        if (TextUtils.isEmpty(e)) {
+            email_feedback.setVisibility(View.VISIBLE);
+            return true;
+        }
+        if (TextUtils.isEmpty(p)) {
+            password_feedback.setVisibility(View.VISIBLE);
+            return true;
+        }
+        if(TextUtils.isEmpty(c)){
+            confirm_passw_feedback.setVisibility(View.VISIBLE);
+        }
+        return false;
+    }
+    public void registerNewUser(final String u, final String f, final String l, final String e, final String p, String c){
+        if(validateInput(u,f,l,e,p,c) == true)
+            return;
         else{
-            passwords_match = false;
-        }
-        return passwords_match;
-    }
+            mAuth.createUserWithEmailAndPassword(e, p)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful())
+                            {
+
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                db.AddUserInfo(new User(user.getUid(),u,f,l,e,p));
+                                Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+
+                                Intent intent = new Intent(welcome_screen_signup.this, welcome_screen_login.class);
+                                startActivity(intent);
+                                progressbar.setVisibility(View.GONE);
+
+
+                            } else
+                            {
+
+                                Toast.makeText(getApplicationContext(), "Registration failed!!" + " Please try again later", Toast.LENGTH_LONG).show();
+                                progressbar.setVisibility(View.GONE);
+
+                            }
+
+                            // ...
+                        }
+                    });
+        }}
+
+
+
+
 }
-
-
-
-
-
-
 
 
 
