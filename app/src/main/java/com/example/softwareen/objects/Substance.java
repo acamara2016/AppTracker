@@ -1,4 +1,4 @@
-package com.example.softwareen;
+package com.example.softwareen.objects;
 
 public class Substance {
     private String name;

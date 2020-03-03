@@ -1,14 +1,9 @@
 package com.example.softwareen;
 
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.objects.Cannibus;
+import com.example.softwareen.objects.User;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import static org.junit.Assert.assertTrue;
 
