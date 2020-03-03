@@ -23,7 +23,6 @@
         <activity
             android:name=".welcome_screen_signup"
             android:parentActivityName=".welcome_screen_login" />
-        <activity android:name=".home_screen" />
         <activity
             android:name=".home_profile"
             android:parentActivityName=".home_screen" />

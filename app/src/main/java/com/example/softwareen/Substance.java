@@ -21,4 +21,8 @@ public class Substance {
     public String getName(){return name;}
     public double getAmount(){return amount;}
 
+    public boolean valid_substance(){
+        return false;
+    }
+
 }

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class User_Substance_Library {
 
-        private ArrayList<Substance> substance_list;
+    private ArrayList<Substance> substance_list;
 
     public User_Substance_Library() {
+
+        substance_list = new ArrayList<Substance>();
 
     }
 
@@ -27,16 +29,31 @@ public class User_Substance_Library {
         return "Substance not contained in list";
 
     }
+
     public void add_substance(Substance name) {
         substance_list.add(name);
     }
+
     public void remove_substance(Substance name) {
         substance_list.remove(name);
     }
+
     public void see_library(){
         for(int i = 0; i< substance_list.size(); i++  ){
-
             System.out.println(i + "." + " " + substance_list.get(i).getName());
+        }
+    }
+
+    public boolean valid_substance(Substance substance) {
+
+        if (substance.valid_substance() == true) {
+
+            return true;
+        }
+
+        else {
+
+            return false;
         }
     }
 }
