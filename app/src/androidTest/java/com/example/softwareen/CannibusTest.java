@@ -1,5 +1,7 @@
 package com.example.softwareen;
 
+import com.example.softwareen.objects.Cannibus;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

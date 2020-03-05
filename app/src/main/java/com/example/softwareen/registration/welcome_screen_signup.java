@@ -1,4 +1,4 @@
-package com.example.softwareen;
+package com.example.softwareen.registration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +14,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.softwareen.R;
+import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.home_screen;
+import com.example.softwareen.objects.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import org.w3c.dom.Text;
 
 public class welcome_screen_signup extends AppCompatActivity {
     private EditText username, first_name, last_name, email, password, confirm_passw;

@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.widget.*;
-import android.view.*;
+
+import com.example.softwareen.objects.User;
 
 public class home_profile extends AppCompatActivity {
 

@@ -1,18 +1,9 @@
-package com.example.softwareen;
+package com.example.softwareen.db;
 
-import android.content.Intent;
 import android.util.Log;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.firebase.client.Firebase;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.example.softwareen.objects.Substance;
+import com.example.softwareen.objects.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-class FirebaseHandler {
+public class FirebaseHandler {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref;
     public FirebaseHandler(String reference)
@@ -66,6 +57,24 @@ class FirebaseHandler {
 
         ref.child("user").child(u.getUID()).setValue(u);
 
+    }
+
+    public void retrieveSubstance(){
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
     }
 
     public User retrieveUser(){
