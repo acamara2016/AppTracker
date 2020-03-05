@@ -43,6 +43,5 @@ public class User_Substance_Library {
             System.out.println(i + "." + " " + substance_list.get(i).getName());
         }
     }
-
 }
 

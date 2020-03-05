@@ -17,21 +17,9 @@ public class AlcoholTest {
 
         Alcohol testCase = new Alcohol("098kdos970", "Scotia", 1,"Wine", 5);
 
-        assertTrue( "Set method for name is correct", id.equals(testCase.getName()));
-        assertTrue( "Set method for amount is correct", amount ==testCase.getAmount());
-        assertTrue( "Set method for type is correct", id.equals(testCase.getType()));
-        assertTrue( "Set method for alcohol_per_volume is correct", id.equals(testCase.getType()));
-    }
-
-    @Test
-    public void test_toString_methods(){
-
-        Alcohol testCase = new Alcohol("098kdos970", "Scotia", 1,"Wine", 5);
-        String testString = "Name: Scotia" + "\n" +
-                "Type: Wine" + "\n" +
-                "ABV: 5%";
-
-        assertTrue( "toString method works: ", testString.equals(testCase.toString()));
+        assertTrue( "Get method for name is correct", name.equals(testCase.getName()));
+        assertTrue( "Get method for type is correct", type.equals(testCase.getType()));
+        assertTrue( "Get method for alcohol_per_volume is correct", alcohol_per_volume == testCase.get_Alcohol_per_volume());
     }
 
     @Test

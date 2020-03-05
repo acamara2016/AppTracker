@@ -26,8 +26,11 @@ public class Alcohol extends Substance {
     public void setType(String type) {this.type = type;}
     public void set_alcohol_per_volume(double alcohol_per_volume) { this.alcohol_per_volume = alcohol_per_volume;}
 
-    public String getType() {return type; }
+    public String getType() { return type;}
     public double get_Alcohol_per_volume() { return alcohol_per_volume;}
+
+    //public double getAmount(){return amount;}
+
 
     /**
      * Method to print all the information regarding the product. This method takes no parameters, and

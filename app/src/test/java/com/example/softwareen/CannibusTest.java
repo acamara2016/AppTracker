@@ -13,14 +13,14 @@ public class CannibusTest {
         String name ="Scotia" ;
         double amount = 1;
         String strain = "Sativa";
-        double cbd = 12;
-        double thc = 22;
+        double cbd = 22;
+        double thc = 12;
 
         Cannibus testCase = new Cannibus("098kdos970", "Scotia", 1,"Sativa",12,22);
 
-        assertTrue( "Set method for name is correct", id.equals(testCase.getName()));
+        assertTrue( "Set method for name is correct", name.equals(testCase.getName()));
         assertTrue( "Set method for amount is correct", amount ==testCase.getAmount());
-        assertTrue( "Set method for stain is correct", id.equals(testCase.getType()));
+        assertTrue( "Set method for stain is correct", strain.equals(testCase.getType()));
         assertTrue( "Set method for thc_content is correct",thc == testCase.get_thc_content());
         assertTrue( "Set method for cbd_content is correct",cbd == testCase.get_cbd_content());
 
