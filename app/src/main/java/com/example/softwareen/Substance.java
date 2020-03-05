@@ -11,6 +11,9 @@ public class Substance {
     }
     public Substance(String id, String name, double amount){
         this.id=id;
+        if(name == null){
+            name = "";
+        }
         this.name=name;
         this.amount=amount;
     }
@@ -21,8 +24,10 @@ public class Substance {
     public String getName(){return name;}
     public double getAmount(){return amount;}
 
-    public boolean valid_substance(){
+    public boolean valid_substance(Substance substance){
+
         return false;
     }
+
 
 }

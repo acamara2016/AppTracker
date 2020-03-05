@@ -44,17 +44,5 @@ public class User_Substance_Library {
         }
     }
 
-    public boolean valid_substance(Substance substance) {
-
-        if (substance.valid_substance() == true) {
-
-            return true;
-        }
-
-        else {
-
-            return false;
-        }
-    }
 }
 

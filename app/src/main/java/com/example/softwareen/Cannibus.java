@@ -21,7 +21,6 @@ public class Cannibus extends Substance{
      */
 
         public Cannibus(String id, String name, double amount, String strain, double thc_content, double cbd_content) {
-
             super(id, name, amount);
             this.strain = strain;
             this.thc_content = thc_content;
@@ -60,19 +59,18 @@ public class Cannibus extends Substance{
      * @return Returns a Boolean, ture if the substance input is valid, false otherwise.
      *
      *
-
      */
-    @Override
-    public boolean valid_substance(){
+    public boolean valid_substance(Cannibus cannibus){
 
-        if( name.length() > 0 && thc_content >0 && cbd_content >0 ){
-            return true;
-        }
-        else{
+        // Boolean return_boolean = false;
+
+        if( cannibus.getName().isEmpty() || cannibus.getType().isEmpty()|| cannibus.getAmount()<=0|| cannibus.get_cbd_content()<=0 ||cannibus.get_thc_content()<=0  ){
             return false;
         }
-
+        else{
+            return true;
+        }
     }
-    }
+}
 
 

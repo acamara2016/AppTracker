@@ -44,20 +44,23 @@ public class Alcohol extends Substance {
     }
 
     /**
-     * When the method is called it checks to see whether or not the inputted values are valid or not.
+     * When the method valid_substance is called it checks to see whether or not the inputted values are valid or not.
      *
      * @return Returns a Boolean, ture if the substance input is valid, false otherwise.
      *
      */
-    @Override
-    public boolean valid_substance(){
 
-        if( name.length() > 0 && alcohol_per_volume >0 && type.length()>0 ){
-            return true;
-        }
-        else{
+
+    public boolean valid_substance(Alcohol alcohol){
+
+       // Boolean return_boolean = false;
+
+        if( alcohol.getName().isEmpty() || alcohol.getType().isEmpty()|| alcohol.get_Alcohol_per_volume()<=0 ||alcohol.getAmount()<=0 ){
             return false;
         }
-
+        else{
+            return true;
+        }
+//return return_boolean;
     }
 }
