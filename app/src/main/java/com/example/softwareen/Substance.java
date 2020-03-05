@@ -1,10 +1,19 @@
-package com.example.softwareen.objects;
+package com.example.softwareen;
 
 public class Substance {
+    private String id;
     private String name;
     private double amount;
 
+
+    public Substance(){
+    }
+
     public Substance(String id, String name, double amount){
+        this.id=id;
+        if(name == null){
+            name = "";
+        }
         this.name=name;
         this.amount=amount;
     }
