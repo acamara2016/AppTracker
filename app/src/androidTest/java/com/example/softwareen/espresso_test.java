@@ -221,6 +221,7 @@ public class espresso_test {
 
 
     }
+
     @Test
     public void sign_up_empty_id_feild() {
 
@@ -244,7 +245,6 @@ public class espresso_test {
                 .check(matches(withText("There was an error setting up your account, please try again")));
 
     }
-
 
     @Test
     public void sign_up_empty_first_name_feild() {

@@ -30,11 +30,10 @@ public class home_screen extends AppCompatActivity {
                 action();
             }
 
-   });
-        }
+        });
+    }
     public void action()
     {
-        Intent i=new Intent(home_screen.this,add_substance_list.class);
-        startActivity(i);
     }
 }
+
