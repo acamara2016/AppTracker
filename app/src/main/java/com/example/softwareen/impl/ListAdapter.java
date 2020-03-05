@@ -13,6 +13,7 @@ import com.example.softwareen.R;
 import com.example.softwareen.objects.Substance;
 import com.example.softwareen.api.SubstanceRetrieverFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,11 +24,17 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
-    List<Substance> data;
+    List<Substance> data = new ArrayList<Substance>();
 
-    ListAdapter(Context context) {
+    public ListAdapter(Context context) {
 
-        data = SubstanceRetrieverFactory.getInstance(context).getSubstance();
+        //data = SubstanceRetrieverFactory.getInstance(context).getSubstance();
+        data.add(new Substance("Substance_1","2"));
+        data.add(new Substance("Substance_2","2"));
+        data.add(new Substance("Substance_3","2"));
+        data.add(new Substance("Substance_4","2"));
+        data.add(new Substance("Substance_5","2"));
+        data.add(new Substance("Substance_6","2"));
     }
 
     @NonNull
@@ -54,11 +61,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView substanceNameView, susbtanceAmountView;
+        private TextView substanceNameView;
 
         private ListViewHolder(View itemView) {
             super(itemView);
-            //susbtanceAmountView = itemView.findViewById(R.id.substance_amount_taken);
             substanceNameView = itemView.findViewById(R.id.substance_name);
             itemView.setOnClickListener(this);
         }
@@ -66,12 +72,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
         private void bindView(int position) {
             Substance substance = data.get(position);
             substanceNameView.setText(substance.getName());
-
-            /**
-             * this method can be overwritten to bind more detail
-             * such as : Picture of the substance, Amount that was taken
-             */
-            //susbtanceAmountView.setText(String.valueOf(substance.getAmount()));
+            System.out.println(substance.getName());
         }
 
         public void onClick(View view){

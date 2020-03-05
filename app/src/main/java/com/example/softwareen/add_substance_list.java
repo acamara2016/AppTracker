@@ -34,7 +34,7 @@ public class add_substance_list extends AppCompatActivity {
         String name = substance_name.getText().toString();
         Substance substance = new Substance(name,amount);
         FirebaseUser user = mAuth.getCurrentUser();
-        db.addSubstance(substance);
+        //db.addSubstance(substance);
         Toast.makeText(add_substance_list.this, "Successfully entered your data",
                 Toast.LENGTH_SHORT).show();
     }

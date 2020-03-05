@@ -10,8 +10,12 @@
         android:layout_width="52dp"
         android:layout_height="59dp"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="29dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:src="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/substance_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="27dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textColor="#080808"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.007"

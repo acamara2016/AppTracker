@@ -2,6 +2,8 @@ package com.example.softwareen.db;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.example.softwareen.objects.Substance;
 import com.example.softwareen.objects.User;
 import com.google.firebase.database.DataSnapshot;
@@ -10,53 +12,46 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class FirebaseHandler {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref;
-    public FirebaseHandler(String reference)
-    {
+    public FirebaseHandler(String reference) {
 
         ref= database.getReference(reference);
     }
 
-
+    /**
+     * Pass the consumed substance to user consumed substance table on Firebase
+     * @param s
+     * @param user
+     */
     public void addCustomSubstance(Substance s, User user){
 
-        ref.child(user.getUID()).child("Substances").push().setValue(s);
+        ref.child(user.getUID()).child("Consumed_Substances").push().setValue(s);
 
     }
 
-    public void addSubstance(Substance s){
-
-        ref.child("Substances").push().setValue(s);
+    public void addSubstance(String uid, Substance s){
+        ref = database.getReference("/");
+        ref.child("User").child(uid).child("Substances").setValue(s);
     }
-    public void retrieveUserData(String uid){
-        // Get a reference to our posts
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("t1/user/"+uid);
 
-        // Attach a listener to read the data at our posts reference
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                System.out.println(user);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-
-    }
-    public void AddUserInfo(User u)
+    /**
+     * Iteration 2, check firebase is username already exist
+     * @param u
+     */
+    public boolean AddUserInfo(User u)
     {
-
-        ref.child("user").child(u.getUID()).setValue(u);
-
+        ref = database.getReference("/");
+        if(retrieveUserData(u.getUsername())== null){
+            ref.child("User").child(u.getUID()).setValue(u);
+            return true;
+        }
+        return false;
     }
 
     public void retrieveSubstance(){
@@ -94,6 +89,39 @@ public class FirebaseHandler {
         });
 
         return u[0];
+    }
+
+    public String retrieveUserData(String preferredUserName){
+        ref = database.getReference("/Users/"+preferredUserName);
+        final String[] userName = new String[1];
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userName[0] = (String) dataSnapshot.child("preferredUserName").getValue();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return userName[0];
+    }
+    public void retrieveDataByObject(String path, ArrayList<Substance> substances){
+        ref = database.getReference(path);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snap : dataSnapshot.getChildren()){
+                    snap.child("preferredUserName").getValue();
+                    snap.child("emailAddress").getValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

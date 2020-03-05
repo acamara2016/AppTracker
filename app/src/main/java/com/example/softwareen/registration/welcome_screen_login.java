@@ -86,7 +86,7 @@ public class welcome_screen_login extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             String userName = retrieveUserName(user.getUid());
                             Intent intent = new Intent(welcome_screen_login.this, home_screen.class);
-                            intent.putExtra("username",userName);
+                            intent.putExtra(home_screen.USERNAME, user.getUid());
                             startActivity(intent);
 
                         } else {

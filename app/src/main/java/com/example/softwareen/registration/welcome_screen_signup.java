@@ -31,6 +31,8 @@ public class welcome_screen_signup extends AppCompatActivity {
     private Button sign_button;
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
+    public final static String USERNAME = "PreferredUsername";
+    public final static String EMAIL_ADDRESS = "EmailAddress";
     FirebaseHandler db = new FirebaseHandler("t1");
 
     @Override
@@ -125,6 +127,7 @@ public class welcome_screen_signup extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
 
                                 Intent intent = new Intent(welcome_screen_signup.this, home_screen.class);
+                                intent.putExtra(home_screen.USERNAME, user.getUid());
                                 startActivity(intent);
                                 progressbar.setVisibility(View.VISIBLE);
 

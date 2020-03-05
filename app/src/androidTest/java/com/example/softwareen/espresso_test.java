@@ -336,8 +336,7 @@ public class espresso_test {
                     .perform(replaceText("Avrqt17123"));
             onView(withId(R.id.signup_signup_btn))
                     .perform(click());
-            onView(withId(R.id.welcome))
-             .check(matches(withText("Welcome js53711")));
+
 
         }
 }
