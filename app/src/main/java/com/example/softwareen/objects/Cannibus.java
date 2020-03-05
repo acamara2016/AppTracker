@@ -34,6 +34,7 @@ public class Cannibus extends Substance{
         public String getType() {return strain;}
         public double get_thc_content() { return thc_content;}
         public double get_cbd_content() { return cbd_content;}
+        public double getAmount(){return super.getAmount();}
 
     /**
      * Method to print all the information regarding the product. This method takes no parameters, and

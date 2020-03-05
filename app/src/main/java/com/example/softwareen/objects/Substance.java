@@ -4,7 +4,13 @@ public class Substance {
     private String name;
     private double amount;
 
+    public Substance(){
+
+    }
     public Substance(String id, String name, double amount){
+        if(name == null){
+            name = "";
+        }
         this.name=name;
         this.amount=amount;
     }

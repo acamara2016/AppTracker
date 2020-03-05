@@ -1,5 +1,7 @@
 package com.example.softwareen;
 
+import com.example.softwareen.objects.Alcohol;
+
 import org.junit.Test;
 
 import java.util.ArrayList;

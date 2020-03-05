@@ -29,9 +29,6 @@ public class Alcohol extends Substance {
     public String getType() { return type;}
     public double get_Alcohol_per_volume() { return alcohol_per_volume;}
 
-    //public double getAmount(){return amount;}
-
-
     /**
      * Method to print all the information regarding the product. This method takes no parameters, and
      * will always return a print statement, even if the enters parameters are invalid.
