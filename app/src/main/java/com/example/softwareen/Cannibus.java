@@ -8,7 +8,7 @@ public class Cannibus extends Substance{
         private double cbd_content;
         private String strain;
 
-        public Cannibus(String id, String name, String amount, String strain, double thc_content, double cbd_content) {
+        public Cannibus(String id, String name, double amount, String strain, double thc_content, double cbd_content) {
 
             super(id, name, amount);
             this.strain = strain;
@@ -17,11 +17,11 @@ public class Cannibus extends Substance{
 
         }
 
-        public void setType(String type) {this.strain = type;}
+        public void setStrain(String type) {this.strain = type;}
         public void set_thc_content(double thc_content) { this.thc_content = thc_content;}
         public void set_cbd_content(double cbd_content) { this.cbd_content = cbd_content;}
 
-        public String getType() {return strain;}
+        public String getStrain() {return strain;}
         public double get_thc_content() { return thc_content;}
         public double get_cbd_content() { return cbd_content;}
 
@@ -33,6 +33,6 @@ public class Cannibus extends Substance{
                     "THC Content: " + this.cbd_content + "%";
 
         }
-    }
+}
 
 

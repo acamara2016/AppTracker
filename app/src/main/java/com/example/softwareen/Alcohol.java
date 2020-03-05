@@ -6,7 +6,7 @@ public class Alcohol extends Substance {
     private double alcohol_per_volume;
     private String type;
 
-    public Alcohol(String id, String name, String amount, String type, double alcohol_per_volume) {
+    public Alcohol(String id, String name, double amount, String type, double alcohol_per_volume) {
         super(id, name, amount);
         this.type = type;
         this.alcohol_per_volume = alcohol_per_volume;

@@ -2,21 +2,21 @@ package com.example.softwareen;
 
 public class Substance {
     private String name;
-    private String amount;
+    private double amount;
 
 
     public Substance(String name, String amount){
 
     }
-    public Substance(String id, String name, String amount){
+    public Substance(String id, String name, double amount){
         this.name=name;
         this.amount=amount;
     }
 
     public void setName(String name){ this.name=name;}
-    public void setAmount(String amount){this.amount=amount;}
+    public void setAmount(double amount){this.amount=amount;}
 
     public String getName(){return name;}
-    public String getAmount(){return amount;}
+    public double getAmount(){return amount;}
 
 }

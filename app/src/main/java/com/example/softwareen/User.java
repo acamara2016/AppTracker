@@ -1,6 +1,11 @@
 package com.example.softwareen;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class User implements Parcelable {
     private String uid;
@@ -9,6 +14,7 @@ public class User implements Parcelable {
     private String last_name;
     private String email;
     private String password; // We might remove this for sec reasons
+    private ArrayList<Substance>  diary = new ArrayList<Substance>();
 
     public User(){
 
@@ -45,6 +51,14 @@ public class User implements Parcelable {
     };
 
     //setters
+
+    /**
+     * \stes the value of user diary
+     * @param diary is an ArrayList of substances for this user
+     */
+    public void setDiary(ArrayList<Substance> diary) {
+        this.diary = diary;
+    }
     public void setUID(String uid){
         this.uid=uid;
     }
@@ -63,9 +77,19 @@ public class User implements Parcelable {
     public void setPassword(String password){
         this.password=password;
     }
+
     //getters
     public String getUID(){return uid;}
     public String getUsername() {return username;}
+
+    /**
+     *
+     * @return ArrayList<Substance> to show list of substance objects
+     */
+    public ArrayList<Substance> getDiary() {
+        return diary;
+    }
+
     public String getFirst_name(){return first_name;}
     public String getLast_name(){return last_name;}
     public String getEmail(){return email;}
@@ -90,5 +114,13 @@ public class User implements Parcelable {
         dest.writeString(last_name);
         dest.writeString(email);
         dest.writeString(password);
+    }
+
+    /**
+     * This method is going to allow user object to add a substance to its profile
+     * @param sub
+     */
+    public void addSubstance(Substance sub){
+        diary.add(sub);
     }
 }
