@@ -39,6 +39,7 @@ public class FirebaseTest {
         User u =new User(uid,username,first_name,last_name,email,password);
         handler.AddUserInfo(u);
         handler.addCustomSubstance(testCase, u);
+        System.out.print(handler.giveDate());
 
     }
 

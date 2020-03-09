@@ -21,4 +21,8 @@ public class Substance {
     public String getName(){return name;}
     public double getAmount(){return amount;}
 
+    public String toString(){
+        return ("Name: "+this.name+" Amount: "+this.amount);
+    }
+
 }

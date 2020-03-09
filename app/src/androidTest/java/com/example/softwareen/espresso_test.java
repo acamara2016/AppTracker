@@ -316,7 +316,6 @@ public class espresso_test {
                 .check(matches(withText("There was an error setting up your account, please try again")));
 
     }
-
     @Test
     public void correct_sign_up() {
 
@@ -340,6 +339,7 @@ public class espresso_test {
              .check(matches(withText("Welcome js53711")));
 
         }
+
 }
 
 
