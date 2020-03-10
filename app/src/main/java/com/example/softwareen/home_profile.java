@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.widget.*;
 
+import com.example.softwareen.R;
 import com.example.softwareen.objects.User;
 
 public class home_profile extends AppCompatActivity {

@@ -16,4 +16,26 @@
     <string name="menu_send">Send</string>
     <string name="login">Login</string>
     <string name="signup">Signup</string>
+    <string name="beer">Beer</string>
+    <string name="description">Description</string>
+    <string-array name="substances">
+        <item>Beer</item>
+        <item>Vodka</item>
+        <item>Gin</item>
+        <item>Cider</item>
+        <item>Whisky</item>
+        <item>Wine</item>
+        <item>Weed</item>
+
+
+    </string-array>
+<string-array name="description">
+    <item>This is a random description</item>
+    <item>This is a random description</item>
+    <item>This is a random description</item>
+    <item>This is a random description</item>
+    <item>This is a random description</item>
+    <item>This is a random description</item>
+    <item>This is a random description</item>
+</string-array>
 </resources>
