@@ -10,20 +10,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.softwareen.db.FirebaseHandler;
 import com.example.softwareen.objects.Substance;
 import com.example.softwareen.registration.welcome_screen_login;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.List;
 
 public class add_create_substance extends AppCompatActivity {
     public final static String UID = "userUID";
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseHandler fb = new FirebaseHandler();
     private FirebaseAuth mAuth;
     private EditText subsNameView;
@@ -41,15 +39,7 @@ public class add_create_substance extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         final String uid = user.getUid();
-        /*listView = findViewById(R.id.pre_made_list_view);
-        List<Substance> subsList = fb.retrieveConsumedSubtance();
-        ArrayAdapter<Substance> adapter = new ArrayAdapter<Substance>(
-                this,
-                android.R.layout.simple_list_item_1,
-                subsList
-        );
-        listView.setAdapter(adapter);
-        */
+
         /**
          * onClick handle the request user to record a consumed substance
          */
@@ -60,6 +50,7 @@ public class add_create_substance extends AppCompatActivity {
                 s.setName(subsNameView.getText().toString());
                 s.setAmount(Double.parseDouble(unitView.getText().toString()));
                 fb.AddingSubstance(uid,s);
+                Toast.makeText(add_create_substance.this, "Successfully recorded "+s.getName()+"Return & Refresh to see list", Toast.LENGTH_SHORT).show();
             }
         });
     }

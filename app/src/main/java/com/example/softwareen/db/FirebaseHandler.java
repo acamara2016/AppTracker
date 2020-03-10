@@ -87,13 +87,13 @@ public class FirebaseHandler{
         ref.child("user").child(uid).child("consumedList").child(giveDate()).child(String.valueOf(index)).setValue(s);
     }
     public void updateUsername(String username, String uid){
-        ref.child("user").child(uid).child("username");
+        ref.child("user").child(uid).child("username").setValue(username);
     }
-    public void updateFirstName(String username, String uid){
-        ref.child("user").child(uid).child("first_name");
+    public void updateFirstName(String firstName, String uid){
+        ref.child("user").child(uid).child("first_name").setValue(firstName);
     }
-    public void updateLastName(String username, String uid){
-        ref.child("user").child(uid).child("last_name");
+    public void updateLastName(String lastName, String uid){
+        ref.child("user").child(uid).child("last_name").setValue(lastName);
     }
     public void updateEmail(String username, String uid){
         ref.child("user").child(uid).child("email");
