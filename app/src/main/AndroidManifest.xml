@@ -13,13 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".home_screen"
-            android:label="@string/title_activity_home_screen"
-            android:parentActivityName=".registration.welcome_screen_login"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.softwareen.registration.welcome_screen_login" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".registration.welcome_screen_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,9 +27,7 @@
         <activity
             android:name=".home_profile"
             android:parentActivityName=".home_screen" />
-        <activity
-            android:name=".add_create_substance"
-            android:parentActivityName=".home_screen" />
+
     </application>
 
 </manifest>
