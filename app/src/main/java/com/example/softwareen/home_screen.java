@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.softwareen.db.FirebaseHandler;
 import com.example.softwareen.objects.Substance;
 import com.example.softwareen.objects.User;
+import com.example.softwareen.registration.welcome_screen_login;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,22 +43,27 @@ public class home_screen extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private TextView fullname, username;
     public final static String UID = "userUID";
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    FirebaseHandler fb = new FirebaseHandler();
     DatabaseReference ref;
+    private FirebaseAuth mAuth;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen3);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        uid = user.getUid();
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(home_screen.this, add_create_substance.class);
+                intent.putExtra(add_create_substance.UID, UID);
+                startActivity(intent);
+
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -76,10 +82,6 @@ public class home_screen extends AppCompatActivity {
 
         fullname = (TextView) headerView.findViewById(R.id.home_screen_full_name);
         username = (TextView) headerView.findViewById(R.id.home_screen_username);
-
-
-        Intent intent = getIntent();
-        String uid = intent.getStringExtra(home_screen.UID);
 
         ref = FirebaseDatabase.getInstance().getReference().child("user").child(uid);
         ref.addValueEventListener(new com.google.firebase.database.ValueEventListener() {

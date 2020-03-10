@@ -35,7 +35,7 @@
             android:parentActivityName=".home_screen" />
         <activity
             android:name=".add_create_substance"
-            android:parentActivityName=".add_substance_list" />
+            android:parentActivityName=".home_screen" />
     </application>
 
 </manifest>

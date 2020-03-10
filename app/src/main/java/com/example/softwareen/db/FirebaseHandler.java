@@ -1,18 +1,17 @@
 package com.example.softwareen.db;
 
-import android.util.Log;
-import android.widget.Toast;
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.softwareen.R;
 import com.example.softwareen.home_screen;
 import com.example.softwareen.objects.Substance;
 import com.example.softwareen.objects.User;
-import com.example.softwareen.registration.welcome_screen_login;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,23 +20,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
-public class FirebaseHandler {
+public class FirebaseHandler{
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    ;
+    public String noOfConsumedSubs;
     FirebaseUser user = mAuth.getCurrentUser();
+    public String uid = user.getUid();
 
-    public FirebaseHandler() { }
+    public FirebaseHandler() {
+        noOfConsumedSubs = "";
+    }
 
     public String retrieveCurrentUID(){
         return user.getUid();
@@ -55,11 +56,35 @@ public class FirebaseHandler {
         ref.child("user").child(u.getUID()).setValue(u);
 
     }
-    public void AddDefaultSubstance(String uid){
-        ref.child("user").child(uid).child("consumedList").child(giveDate()).push().setValue(new Substance(null,null,0.00));
+
+    public void AddingSubstance(final String uid, final Substance s){
+        ref = FirebaseDatabase.getInstance().getReference().child("user").child(uid).child("consumedList");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Long value = (Long)dataSnapshot.child("No").getValue();
+                ref.child("No").setValue(value+1);
+                Long index = value+1;
+                ref = FirebaseDatabase.getInstance().getReference().child("user").child(uid).child("consumedList");
+                ref.child(giveDate()).child(""+index).setValue(s);
+                ref.removeEventListener(this);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
-    public void AddSubstance(String uid, Substance s){
-        ref.child("user").child(uid).child("consumedList").child(giveDate()).push().setValue(s);
+
+
+    public void AddDefaultSubstance(String uid){
+        ref.child("user").child(uid).child("consumedList").child("No").setValue(1);
+        ref.child("user").child(uid).child("consumedList").child(giveDate()).child(String.valueOf(1)).setValue(new Substance(null,null,0.00));
+    }
+    public void AddSubstance(String uid, Substance s, Long index){
+        ref.child("user").child(uid).child("consumedList").child(giveDate()).child(String.valueOf(index)).setValue(s);
     }
     public void updateUsername(String username, String uid){
         ref.child("user").child(uid).child("username");
@@ -73,23 +98,44 @@ public class FirebaseHandler {
     public void updateEmail(String username, String uid){
         ref.child("user").child(uid).child("email");
     }
+
+
     public String giveDate() {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         return sdf.format(cal.getTime());
     }
-    public List<Substance> retrieveConsumedSubstance(String uid, int day){
-        final List<Substance> list = new ArrayList<Substance>();
-        ref = FirebaseDatabase.getInstance().getReference().child("user").child(uid).child("consumedList").child("2020").child("03").child(String.valueOf(day));
+    public String giveYear() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        return sdf.format(cal.getTime());
+    }
+    public String giveMonth() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("MM");
+        return sdf.format(cal.getTime());
+    }
+    public String giveDay() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd");
+        return sdf.format(cal.getTime());
+    }
+
+
+    public List<Substance> retrieveConsumedSubtance() {
+        ref = FirebaseDatabase.getInstance().getReference().child("user").child(uid).child("consumedList").child(giveDate());
+        final List<Substance> subslist = new ArrayList<Substance>();
         ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot datasnapshot: dataSnapshot.getChildren()){
+            public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
+                for (DataSnapshot userSnapshot: dataSnapshot.getChildren()) {
                     Substance s = new Substance();
-                    s.setName((String) datasnapshot.child("name").getValue());
-                    s.setAmount((Double) datasnapshot.child("name").getValue());
-                    list.add(s);
+                    s.setName((String) userSnapshot.child("name").getValue());
+                    s.setAmount((Long) userSnapshot.child("amount").getValue());
+                    System.out.println(s.toString());
+                    subslist.add(s);
                 }
+
             }
 
             @Override
@@ -97,8 +143,7 @@ public class FirebaseHandler {
 
             }
         });
-
-        return list;
+        return subslist;
     }
 
 

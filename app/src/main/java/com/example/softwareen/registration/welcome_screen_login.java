@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.softwareen.R;
 import com.example.softwareen.db.FirebaseHandler;
 import com.example.softwareen.home_screen;
+import com.example.softwareen.objects.Substance;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -38,7 +39,7 @@ public class welcome_screen_login extends AppCompatActivity {
     private ProgressBar progressbar;
     private EditText email;
     private EditText password;
-    private FirebaseHandler fb;
+    FirebaseHandler fb = new FirebaseHandler();
     private Firebase firebase;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
@@ -88,7 +89,6 @@ public class welcome_screen_login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-
                             FirebaseUser user = mAuth.getCurrentUser();
                             String uid = mAuth.getCurrentUser().getUid();
                             Intent intent = new Intent(welcome_screen_login.this, home_screen.class);
@@ -105,12 +105,6 @@ public class welcome_screen_login extends AppCompatActivity {
                     }
                 });
         //return user;
-    }
-
-    public String giveDate() {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        return sdf.format(cal.getTime());
     }
 
 }
