@@ -1,8 +1,5 @@
 package com.example.softwareen.db;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

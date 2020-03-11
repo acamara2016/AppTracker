@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.softwareen.R;
 import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.impl.ListAdapter;
 import com.example.softwareen.objects.Substance;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
+        final ListAdapter listAdapter = new ListAdapter();
         refresh_button = root.findViewById(R.id.refresh_button);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -51,6 +53,13 @@ public class HomeFragment extends Fragment {
                 textView.setText(fb.giveDate());
             }
         });
+        /*homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<List<Substance>>() {
+            @Override
+            public void onChanged(List<Substance> events) {
+                listAdapter.data = events;
+                listAdapter.notifyDataSetChanged();
+            }
+        });*/
         listView = root.findViewById(R.id.subsList);
         final List<Substance> subsList = fb.retrieveConsumedSubtance();
         final ArrayAdapter<Substance> adapter = new ArrayAdapter<Substance>(
