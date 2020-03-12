@@ -11,7 +11,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.softwareen.R;
+import com.example.softwareen.db.FirebaseHandler;
 import com.example.softwareen.home_screen;
+import com.example.softwareen.objects.Substance;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -21,6 +23,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 /**
  * welcome_screen_login.java used for handling login activity
@@ -32,7 +39,11 @@ public class welcome_screen_login extends AppCompatActivity {
     private ProgressBar progressbar;
     private EditText email;
     private EditText password;
+    //FirebaseHandler fb = new FirebaseHandler();
     private Firebase firebase;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference ref = database.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +51,6 @@ public class welcome_screen_login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_welcome_screen_login);
         progressbar = findViewById(R.id.login_progressBar);
-        /**
-         * Access the firebase database using the direct link
-         */
-
-        //firebase = new Firebase("https://csci-3130-software-engineering.firebaseio.com/t1/user");
     }
 
 
@@ -84,9 +90,9 @@ public class welcome_screen_login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            String userName = retrieveUserName(user.getUid());
+                            String uid = mAuth.getCurrentUser().getUid();
                             Intent intent = new Intent(welcome_screen_login.this, home_screen.class);
-                            intent.putExtra("username",userName);
+                            intent.putExtra(home_screen.UID, uid);
                             startActivity(intent);
 
                         } else {
@@ -99,29 +105,6 @@ public class welcome_screen_login extends AppCompatActivity {
                     }
                 });
         //return user;
-    }
-
-    /** Method called to retrieve user data when signed in
-     * @author: Ben & Adama
-     * @Iteration: 1
-     * @return User object
-     */
-    public String retrieveUserName(final String uid){
-        final String[] value = new String[1];
-        firebase = new Firebase("https://csci-3130-software-engineering.firebaseio.com/t1/user/"+uid+"/username");
-        firebase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                value[0] = dataSnapshot.getValue(String.class);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Toast.makeText(welcome_screen_login.this, "Failed to pull your data",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        return value[0];
     }
 
 }

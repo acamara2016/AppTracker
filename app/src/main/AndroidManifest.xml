@@ -27,9 +27,10 @@
         <activity
             android:name=".home_profile"
             android:parentActivityName=".home_screen" />
-        <activity
-            android:name=".add_create_substance"
-            android:parentActivityName=".add_substance_list" />
+        <activity android:name=".add_from_list_know"
+            android:parentActivityName=".home_screen"/>
+        <activity android:name=".add_create_substance"
+            android:parentActivityName=".home_screen"/>
     </application>
 
 </manifest>

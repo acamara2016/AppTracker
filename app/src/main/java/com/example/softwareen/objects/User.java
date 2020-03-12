@@ -2,6 +2,9 @@ package com.example.softwareen.objects;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class User implements Parcelable {
     private String uid;
     private String username;
@@ -9,11 +12,12 @@ public class User implements Parcelable {
     private String last_name;
     private String email;
     private String password; // We might remove this for sec reasons
+    private ArrayList<Substance> consumedList;
 
     public User(){
 
     }
-    public User(String uid, String username, String first_name, String last_name, String email, String password){
+    public User(String uid, String username, String first_name, String last_name, String email, String password, ArrayList<Substance> consumedList){
 
         this.email=email;
         this.username=username;
@@ -21,6 +25,7 @@ public class User implements Parcelable {
         this.last_name=last_name;
         this.uid=uid;
         this.password = password;
+        this.consumedList = consumedList;
     }
 
     protected User(Parcel in) {
@@ -63,12 +68,14 @@ public class User implements Parcelable {
     public void setPassword(String password){
         this.password=password;
     }
+    public void setConsumedList(ArrayList<Substance> consumedList){this.consumedList = consumedList;}
     //getters
     public String getUID(){return uid;}
     public String getUsername() {return username;}
     public String getFirst_name(){return first_name;}
     public String getLast_name(){return last_name;}
     public String getEmail(){return email;}
+    public ArrayList<Substance> getConsumedList(){return consumedList;}
 
     public String toString(){
         return "Name: " + this.first_name + " " + this.last_name + "/n" +
