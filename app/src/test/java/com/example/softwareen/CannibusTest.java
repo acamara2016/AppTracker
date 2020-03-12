@@ -1,6 +1,6 @@
 package com.example.softwareen;
 
-import com.example.softwareen.objects.Cannibus;
+import com.example.softwareen.classes.Cannibus;
 
 import org.junit.Test;
 

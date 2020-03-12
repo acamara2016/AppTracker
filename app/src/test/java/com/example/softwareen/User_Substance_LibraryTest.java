@@ -1,10 +1,8 @@
 package com.example.softwareen;
 
-import com.example.softwareen.objects.Alcohol;
+import com.example.softwareen.classes.Alcohol;
 
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 

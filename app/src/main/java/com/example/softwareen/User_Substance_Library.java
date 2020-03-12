@@ -1,5 +1,7 @@
 package com.example.softwareen;
 
+import com.example.softwareen.classes.Substance;
+
 import java.util.ArrayList;
 
 public class User_Substance_Library {

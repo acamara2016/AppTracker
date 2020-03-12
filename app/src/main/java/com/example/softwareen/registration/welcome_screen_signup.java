@@ -15,14 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.softwareen.R;
-import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.database.FirebaseHandler;
 import com.example.softwareen.home_screen;
-import com.example.softwareen.objects.User;
+import com.example.softwareen.classes.Substance;
+import com.example.softwareen.classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 public class welcome_screen_signup extends AppCompatActivity {
     private EditText username, first_name, last_name, email, password, confirm_passw;
@@ -31,7 +34,8 @@ public class welcome_screen_signup extends AppCompatActivity {
     private Button sign_button;
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
-    FirebaseHandler db = new FirebaseHandler("t1");
+    FirebaseHandler db = new FirebaseHandler();
+    public final static String UID = "userUID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,10 +125,13 @@ public class welcome_screen_signup extends AppCompatActivity {
                             {
 
                                 FirebaseUser user = mAuth.getCurrentUser();
-                                db.AddUserInfo(new User(user.getUid(),u,f,l,e,p));
+                                ArrayList<Substance> list = new ArrayList<Substance>();
+                                //list.add(new Substance("0","default",0.00));
+                                db.AddUserInfo(new User(user.getUid(),u,f,l,e,p,list));
+                                db.AddDefaultSubstance(user.getUid());
                                 Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-
                                 Intent intent = new Intent(welcome_screen_signup.this, home_screen.class);
+                                intent.putExtra(home_screen.UID, user.getUid());
                                 startActivity(intent);
                                 progressbar.setVisibility(View.VISIBLE);
 

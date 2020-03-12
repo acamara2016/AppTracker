@@ -1,6 +1,5 @@
 package com.example.softwareen.impl;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,31 +8,27 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.softwareen.R;
-import com.example.softwareen.objects.Substance;
-import com.example.softwareen.api.SubstanceRetrieverFactory;
 
+import com.example.softwareen.R;
+import com.example.softwareen.classes.Substance;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Adama Camara
+ * @author Mahir & Asif
  *
  * Recycler View adapter for displaying events in a list layout
  */
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder> {
 
-    List<Substance> data;
-
-    ListAdapter(Context context) {
-
-        data = SubstanceRetrieverFactory.getInstance(context).getSubstance();
-    }
+    List<Substance> data = new ArrayList<>();
 
     @NonNull
     @Override
     public ListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.substance_recyclerview_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_view_item, parent, false);
         return new ListViewHolder(view);
     }
 
@@ -44,7 +39,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
     @Override
     public long getItemId(int position) {
-
         return super.getItemId(position);
     }
 
@@ -54,24 +48,21 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
     }
 
     public class ListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView substanceNameView, susbtanceAmountView;
+        private TextView subs_name_view, subs_amount_view;
 
         private ListViewHolder(View itemView) {
             super(itemView);
-            //susbtanceAmountView = itemView.findViewById(R.id.substance_amount_taken);
-            substanceNameView = itemView.findViewById(R.id.substance_name);
+            subs_amount_view = itemView.findViewById(R.id.subs_amount_list_item);
+            subs_name_view = itemView.findViewById(R.id.substance_name_list_item);
+           // eventImageView = itemView.findViewById(R.id.event_image);
             itemView.setOnClickListener(this);
         }
 
         private void bindView(int position) {
-            Substance substance = data.get(position);
-            substanceNameView.setText(substance.getName());
-
-            /**
-             * this method can be overwritten to bind more detail
-             * such as : Picture of the substance, Amount that was taken
-             */
-            //susbtanceAmountView.setText(String.valueOf(substance.getAmount()));
+            Substance s = data.get(position);
+            subs_name_view.setText(s.getName());
+            subs_amount_view.setText(String.valueOf(s.getAmount()));
+            //Picasso.get().load(s.get).fit().centerCrop().into(eventImageView);
         }
 
         public void onClick(View view){

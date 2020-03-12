@@ -1,4 +1,4 @@
-package com.example.softwareen.objects;
+package com.example.softwareen.classes;
 
 public class Substance {
     private String name;
@@ -20,5 +20,9 @@ public class Substance {
 
     public String getName(){return name;}
     public double getAmount(){return amount;}
+
+    public String toString(){
+        return ("Name: "+this.name+" Amount: "+this.amount);
+    }
 
 }
