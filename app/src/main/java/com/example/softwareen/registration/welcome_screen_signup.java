@@ -15,10 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.softwareen.R;
-import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.database.FirebaseHandler;
 import com.example.softwareen.home_screen;
-import com.example.softwareen.objects.Substance;
-import com.example.softwareen.objects.User;
+import com.example.softwareen.classes.Substance;
+import com.example.softwareen.classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

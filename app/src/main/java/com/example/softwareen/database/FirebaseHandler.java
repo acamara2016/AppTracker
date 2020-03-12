@@ -1,14 +1,10 @@
-package com.example.softwareen.db;
+package com.example.softwareen.database;
 
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.softwareen.R;
-import com.example.softwareen.home_screen;
-import com.example.softwareen.objects.Substance;
-import com.example.softwareen.objects.User;
-import com.firebase.client.Firebase;
+import com.example.softwareen.classes.Substance;
+import com.example.softwareen.classes.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,13 +13,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.PrintStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class FirebaseHandler{
     private FirebaseDatabase database = FirebaseDatabase.getInstance();

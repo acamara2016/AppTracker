@@ -1,6 +1,6 @@
 package com.example.softwareen;
 
-import com.example.softwareen.objects.Substance;
+import com.example.softwareen.classes.Substance;
 
 import java.util.ArrayList;
 

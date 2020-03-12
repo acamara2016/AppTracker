@@ -11,13 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.softwareen.R;
-import com.example.softwareen.db.FirebaseHandler;
 import com.example.softwareen.home_screen;
-import com.example.softwareen.objects.Substance;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,9 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  * welcome_screen_login.java used for handling login activity

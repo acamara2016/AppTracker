@@ -1,6 +1,6 @@
 package com.example.softwareen;
 
-import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.database.FirebaseHandler;
 
 import org.junit.Test;
 

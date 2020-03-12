@@ -16,9 +16,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.softwareen.R;
-import com.example.softwareen.db.FirebaseHandler;
+import com.example.softwareen.database.FirebaseHandler;
 import com.example.softwareen.impl.ListAdapter;
-import com.example.softwareen.objects.Substance;
+import com.example.softwareen.classes.Substance;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

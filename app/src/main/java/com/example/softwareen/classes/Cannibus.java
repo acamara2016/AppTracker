@@ -1,4 +1,4 @@
-package com.example.softwareen.objects;
+package com.example.softwareen.classes;
 
 public class Cannibus extends Substance{
 

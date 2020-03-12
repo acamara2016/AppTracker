@@ -1,8 +1,8 @@
 package com.example.softwareen;
 
-import com.example.softwareen.db.FirebaseHandler;
-import com.example.softwareen.objects.Cannibus;
-import com.example.softwareen.objects.User;
+import com.example.softwareen.database.FirebaseHandler;
+import com.example.softwareen.classes.Cannibus;
+import com.example.softwareen.classes.User;
 import com.google.firebase.auth.FirebaseAuth;
 
 import static org.junit.Assert.assertTrue;
